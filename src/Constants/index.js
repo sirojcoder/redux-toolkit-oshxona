@@ -25,13 +25,13 @@ export const users = [
     {
         full_name: "Siroj",
         password: "1234",
-        role: "oshpaz",
+        role: "girgitton",
 
     },
     {
         full_name: "Adil",
         password: "4321",
-        role: "girgitton",
+        role: "oshpaz",
     },
 ]
 

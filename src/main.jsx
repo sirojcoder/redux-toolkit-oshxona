@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')).render(
     <Provider store={store}>
      <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />}/>
+        <Route path='/' element={<Login />}/>
         <Route path='/' element={<App />}>
             <Route path='girgitton' element={<RootGirgitton />} />
              <Route path='/client/:id' element={<Menu />} />
