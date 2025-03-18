@@ -16,7 +16,8 @@ function App() {
       </div>
         
       )
-    }else{
+    }
+    else{
       return <Navigate to={'/login'}/>
     }
   }
