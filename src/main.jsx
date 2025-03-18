@@ -44,10 +44,8 @@ createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          {/* Asosiy komponent App */}
+          <Route path='/login' element={<Login />} />
           <Route path='/' element={<App />}>
-            {/* Login sahifasi index sifatida qo‘shiladi */}
-            <Route index element={<Login />} />
             <Route path='girgitton' element={<RootGirgitton />} />
             <Route path='client/:id' element={<Menu />} />
             <Route path='oshpaz' element={<Oshpaz />} />
