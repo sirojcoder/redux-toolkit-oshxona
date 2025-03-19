@@ -2,17 +2,18 @@ import { Button } from 'antd';
 import {meals , drinks , salat} from '../../Constants'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { useState, useSyncExternalStore } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOrder } from '../../store/OrderSlice';
+import { Link, useParams } from 'react-router-dom';
+import Check from './Check';
 
 
  const Meals = ()=> {
    
     const selector = useSelector((state)=> (state?.OrderSlice))
-    console.log(selector);
+    const dispatch = useDispatch()
+    const params = useParams()
     
-
-
-
     const [productList, setProductList] = useState([
         ...meals.map((item, index) => ({ ...item, count: 0, id: `meal-${index}` })),
         ...drinks.map((item, index) => ({ ...item, count: 0, id: `drink-${index}` })),
@@ -33,11 +34,25 @@ import { useSelector } from 'react-redux';
     };
      
 
+    const setCart = () => {
+        if (!params?.id) {
+            console.error("Mijoz ID topilmadi!");
+            return;
+        }
+      
+        const filtered = productList.filter(item => item.count > 0);
     
+        dispatch(setOrder({
+            client: params.id,
+            orders: filtered
+        }));
+    };
+    
+
+
+
     return (
-        <div className="max-w-screen-lg mx-auto p-4">
-          
-          {/* Taomlar */}
+        <div className="max-w-screen-lg mx-auto p-4">      
           <p className="text-center text-3xl border-b text-[#5B3A1D] font-bold mb-6">Taomlar</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {productList.filter(item => item.category === 'meal').map((item, i) => (
@@ -96,11 +111,32 @@ import { useSelector } from 'react-redux';
               </div>
             ))}
           </div>
+         <div className='flex justify-end gap-6'>
+         <div className='flex  pt-9'>
+  <button 
+    onClick={() => setCart()} 
+    className="bg-blue-500 hover:bg-blue-300 text-white font-bold text-lg py-3 px-11 rounded-xl transition duration-300 shadow-lg"
+  >
+    Tasdiqlash
+  </button>
+</div>
+<div className='flex  pt-9'>
+  <button 
+    
+    className="bg-[#5B3A1D] hover:bg-[#9B3D11] !text-white font-bold text-lg py-3 px-11 rounded-xl transition duration-300 shadow-lg"
+  >
+    <Link to={'/check'}>
+    🛒 Korzinka
+    </Link>
+   
+  </button>
+</div>
+
+         </div>
+
       
         </div>
-      );
-      
-      
+      );     
 }
 
 export default Meals

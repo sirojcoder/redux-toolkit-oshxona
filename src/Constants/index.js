@@ -19,7 +19,9 @@ import tarnov from '../assets/images/tarnov.png'
 import damskiy from '../assets/images/damskiy.png'
 import yaponcha from '../assets/images/yaponcha.png'
 
-
+const initialState = {
+    value: [],
+}
 
 export const users = [
     {

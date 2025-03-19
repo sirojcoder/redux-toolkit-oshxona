@@ -1,5 +1,5 @@
 import React, { Children } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import stol from '../../assets/images/stoll.png'
 import { Tabs } from 'antd';
 import Meals from './Meals';
@@ -25,6 +25,12 @@ return (
       <div className="flex flex-wrap items-center  gap-4">
         <img className="w-28 h-28 object-contain" src={stol} alt="stol" />
         <span className="text-2xl sm:text-3xl font-bold text-[#5B3A1D]">{params.id}</span>
+        <button className="border border-gray-400 px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium transition duration-300">
+            <Link to={'/girgitton'} className="block w-full h-full">
+    Orqaga qaytish
+  </Link>
+</button>
+
       </div>
   
       {/* Kategoriyalar */}

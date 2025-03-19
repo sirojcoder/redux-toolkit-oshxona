@@ -38,6 +38,7 @@ import RootGirgitton from './pages/girgitton/Root.jsx';
 import Menu from './pages/girgitton/Menu.jsx';
 import { Provider } from 'react-redux';
 import { store } from './store/Store.js';
+import Check from './pages/girgitton/Check.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -48,6 +49,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/' element={<App />}>
             <Route path='girgitton' element={<RootGirgitton />} />
             <Route path='client/:id' element={<Menu />} />
+            <Route  path='/check' element={<Check />}/>
             <Route path='oshpaz' element={<Oshpaz />} />
           </Route>
         </Routes>
